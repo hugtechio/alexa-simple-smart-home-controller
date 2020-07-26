@@ -15,24 +15,39 @@ export const LATEST_INTERFACE_VERSION = '3';
  * https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-discovery.html
  */
 
+/**
+ * DiscoveryRequest
+ */
 export interface DiscoveryRequestEvent {
   directive: DiscoveryRequestDirective;
 }
 
+/**
+ * Directive object in DiscoveryRequest 
+ */
 export interface DiscoveryRequestDirective {
   header: Header;
   payload: DiscoveryRequestPayload;
 }
 
+/**
+ * Payload object in DiscoveryRequest 
+ */
 export interface DiscoveryRequestPayload {
   scope: TokenScope | any;
 }
 
+/**
+ * TokenScope 
+ */
 export interface TokenScope {
   type: TokenType;
   token: string;
 }
 
+/**
+ * Type of token 
+ */
 export type TokenType = 'BearerToken' | string;
 
 /**

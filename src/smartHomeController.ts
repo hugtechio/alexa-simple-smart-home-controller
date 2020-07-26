@@ -9,6 +9,12 @@ class SmartHomeController {
   private discoveryFunction: Discovery.DiscoveryFunction;
   private deviceSearchFunction: Device.DeviceSearchFunction;
 
+  /**
+   * 
+   * @param event directive object from Alexa Cloud
+   * @param discoverFunction discovery function which discover devices from device cloud 
+   * @param deviceSearchFunction searching function which find a device from user utterance
+   */
   constructor(
     event: any,
     discoverFunction: Discovery.DiscoveryFunction,
@@ -19,16 +25,24 @@ class SmartHomeController {
     this.deviceSearchFunction = deviceSearchFunction;
   }
 
-  public async run(): Promise<{}> {
+  /**
+   * main logic 
+   */
+  public async run(): Promise<{} | Device.ResponseEvent> {
     try {
       const header: Discovery.Header = this.event.directive.header;
 
+      /**
+       * discovery
+       */
       if (
         header.namespace === 'Alexa.Discovery' &&
         header.name === 'Discover'
       ) {
         console.log('Discover event', this.event);
         header.name = 'Discover.Response';
+
+        // Search from DeviceCloud
         const endpoints: Discovery.Endpoint[] = await this.discoveryFunction(
           this.event
         );
@@ -42,9 +56,11 @@ class SmartHomeController {
         };
       }
 
+      // get device for requesting the device cloud
       const device = await this.deviceSearchFunction(this.event);
       if (!device) throw new Error('error');
 
+      // send signal
       const response = await device.sendSignal();
       return response;
     } catch (e) {

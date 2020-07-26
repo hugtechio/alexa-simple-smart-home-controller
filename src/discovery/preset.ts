@@ -59,30 +59,54 @@ export function createCapability(
   return capability;
 }
 
+/**
+ * Controller directive presets
+ */
+
+ /**
+  * PowerController with default value
+  */
 export const PowerControllerPreset = createCapability({
   interface: 'Alexa.PowerController',
   supportedProperties: ['powerState'],
 });
 
+ /**
+  * BrightnessController with default value
+  */
 export const BrightnessControllerPreset = createCapability({
   interface: 'Alexa.BrightnessController',
   supportedProperties: ['brightness'],
 });
 
+/**
+ * ChannelController with default value
+ */
 export const ChannelControllerPreset = createCapability({
   interface: 'Alexa.ChannelController',
   supportedProperties: ['channel'],
 });
 
+/**
+ * StepSpeaker with default value
+ */
 export const StepSpeakerPreset = createCapability({
   interface: 'Alexa.StepSpeaker',
 });
 
+/**
+ * Speaker with default value
+ */
 export const SpeakerPreset = createCapability({
   interface: 'Alexa.Speaker',
   supportedProperties: ['volume', 'muted'],
 });
 
+/**
+ * Custom preset for Curtain device
+ * This preset can accept 'Open', 'Close' utterance 
+ * Note: only compatible ja-JP locale
+ */
 export const CurtainToggleControllerPreset = createCapability({
   interface: 'Alexa.ToggleController',
   instance: 'Curtain',
@@ -132,6 +156,9 @@ export const CurtainToggleControllerPreset = createCapability({
   },
 });
 
+/**
+ * ThermostatController preset with default value 
+ */
 export const ThermostatControllerPreset = createCapability({
   interface: 'Alexa.ThermostatController',
   supportedProperties: [

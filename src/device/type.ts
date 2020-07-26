@@ -9,16 +9,25 @@ import {
  */
 export type ControllerHeaderName = 'Response';
 
+/**
+ * Request of the Controller interface from Alexa Cloud 
+ */
 export interface ControllerRequestEvent {
   directive: Directive;
 }
 
+/**
+ * Directive object in the Controller Request
+ */
 export interface Directive {
   header: DirectiveRequestHeader;
   endpoint: DirectiveRequestEndpoint;
   payload: DirectiveRequestPayload;
 }
 
+/**
+ * Header object in the Controller Request
+ */
 export interface DirectiveRequestHeader {
   namespace: ControllerNameSpace;
   name: string;
@@ -27,23 +36,34 @@ export interface DirectiveRequestHeader {
   correlationToken: string;
 }
 
+/**
+ * Endpoint object in the Controller request
+ */
 export interface DirectiveRequestEndpoint {
   scope: TokenScope | any;
   endpointId: string;
   cookie: Cookie;
 }
 
+/**
+ * Payload object in the Controller request
+ */
 export interface DirectiveRequestPayload {
   [key: string]: any;
 }
 
+/**
+ * Response object of Controller interface
+ */
 export interface Response {
   context: {
     properties: Property[];
   };
   event: ResponseEvent;
 }
-
+/**
+ * Property object in the Controller response
+ */
 export interface Property {
   namespace: ControllerNameSpace;
   name: string;
@@ -52,6 +72,9 @@ export interface Property {
   uncertaintyInMilliseconds: number;
 }
 
+/**
+ * Event object in the Controller response
+ */
 export interface ResponseEvent {
   header: Header;
   endpoint: Endpoint;
@@ -59,7 +82,7 @@ export interface ResponseEvent {
 }
 
 /**
- * Header
+ * Request/Response Header
  */
 export interface Header {
   namespace: ControllerResponseNameSpace;
@@ -69,19 +92,32 @@ export interface Header {
   messageId: string;
 }
 
+/**
+ * Endpoint object in the Controller response 
+ */
 export interface Endpoint {
   scope: TokenScope | any;
   endpointId: string;
   cookie: Cookie;
 }
 
+/**
+ * Token type scope
+ */
 export interface TokenScope {
   type: TokenType;
   token: string;
 }
 
+/**
+ * Token type
+ */
 export type TokenType = 'BearerToken' | string;
 
+
+/**
+ * Cookie object
+ */
 export interface Cookie {
   [key: string]: string;
 }
