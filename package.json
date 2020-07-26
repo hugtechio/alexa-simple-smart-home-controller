@@ -29,9 +29,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "alexa-smart-home-lib",
+  "name": "alexa-simple-smart-home-controller",
   "author": "haruharuharuby",
-  "module": "dist/alexa-smart-home-lib.esm.js",
+  "module": "dist/alexa-simple-smart-home-controller.esm.js",
   "devDependencies": {
     "husky": "^4.2.5",
     "jest-aws-simple-mock": "^0.0.53",
