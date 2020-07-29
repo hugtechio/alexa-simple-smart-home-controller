@@ -33,7 +33,7 @@ export class UserDevice implements IUserDevice {
   /**
    * Get response header 
    */
-  protected getResponseHeader() {
+  protected getResponseHeader(): Device.Header {
     return  {
       namespace: 'Alexa',
       name: 'Response',
