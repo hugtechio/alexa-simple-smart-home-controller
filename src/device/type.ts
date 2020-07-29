@@ -57,7 +57,7 @@ export interface DirectiveRequestPayload {
  * Response object of Controller interface
  */
 export interface Response {
-  context: {
+  context?: {
     properties: Property[];
   };
   event: ResponseEvent;
