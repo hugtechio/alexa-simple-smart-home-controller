@@ -79,7 +79,12 @@ export interface Property {
 export interface ResponseEvent {
   header: Header;
   endpoint: Endpoint;
-  payload: {};
+  payload: {}
+    | ResponseEventErrorPayload
+    | EndpointLowPowerErrorPayload
+    | NotSupportInCurrentModePayload
+    | TemperatureValueOutOfRangePayload
+    | ValueOutOfRangePayload
 }
 
 export interface ResponseEventErrorPayload {
