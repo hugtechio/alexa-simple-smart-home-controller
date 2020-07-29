@@ -2,6 +2,7 @@ import {
   ControllerNameSpace,
   ControllerResponseNameSpace,
   ControllerResponseName,
+  ControllerErrorResponseType
 } from '../namespace';
 
 /**
@@ -79,6 +80,39 @@ export interface ResponseEvent {
   header: Header;
   endpoint: Endpoint;
   payload: {};
+}
+
+export interface ResponseEventErrorPayload {
+  type: ControllerErrorResponseType;
+  message: string;
+}
+
+export interface EndpointLowPowerErrorPayload extends ResponseEventErrorPayload {
+  percentageState: number;
+}
+
+export interface NotSupportInCurrentModePayload extends ResponseEventErrorPayload {
+  currentDeviceMode: string;
+}
+
+export interface TemperatureValueOutOfRangePayload extends ResponseEventErrorPayload {
+  validRange: {
+    minimumValue: {
+      value: number;
+      scale: string;
+    },
+    maximumValue: {
+      value: number;
+      scale: string;
+    }
+  }
+}
+
+export interface ValueOutOfRangePayload extends ResponseEventErrorPayload {
+  validRange: {
+    minimumValue: number;
+    maximumValue: number;
+  }
 }
 
 /**
