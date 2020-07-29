@@ -29,4 +29,17 @@ export class UserDevice implements IUserDevice {
     console.log(this.event);
     return {};
   }
+
+  /**
+   * Get response header 
+   */
+  protected getResponseHeader() {
+    return  {
+      namespace: 'Alexa',
+      name: 'Response',
+      messageId: this.event.directive.header.messageId + '-R',
+      payloadVersion: '3',
+      correlationToken: this.event.directive.header.correlationToken
+    }
+  }
 }
