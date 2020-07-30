@@ -13,7 +13,7 @@ export interface CreateCapabilityParam {
   retrieable?: boolean;
   capabilityResources?: {};
   semantics?: Discovery.Semantics;
-  configuration?: {} | Discovery.ThermostatControllerConfiguration;
+  configuration?: {} | Discovery.ThermostatCapabilityConfiguration;
 }
 
 /**
@@ -174,7 +174,10 @@ export const ThermostatControllerPreset = createCapability({
     'thermostatMode',
   ],
   configuration: {
-    supportedModes: ['']
+    supportedModes: [
+      'AUTO',
+      ''
+    ]
   }
 });
 
