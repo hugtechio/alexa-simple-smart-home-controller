@@ -117,6 +117,17 @@ export const CurtainToggleControllerPreset = createCapability({
   interface: 'Alexa.ToggleController',
   instance: 'Curtain',
   supportedProperties: ['toggleState'],
+  capabilityResources: {
+    friendlyNames: [
+      {
+        '@type': 'text',
+        value: {
+          text: 'カーテン',
+          locale: 'ja-JP'
+        }
+      }
+    ]
+  },
   semantics: {
     actionMappings: [
       {
@@ -179,10 +190,21 @@ export const ThermostatControllerPreset = createCapability({
  */
 export const FanRangeControllerPreset = createCapability({
   interface: 'Alexa.RangeController',
-  instance: 'Fan.speedLevel',
+  instance: 'Fan.speed',
   supportedProperties: [
     'rangeValue'
   ],
+  capabilityResources: {
+    friendlyNames: [
+      {
+        '@type': 'text',
+        value: {
+          text: '扇風機',
+          locale: 'ja-JP'
+        }
+      }
+    ]
+  },
   configuration: {
     supportedRange: {
       minimumValue: 1,
