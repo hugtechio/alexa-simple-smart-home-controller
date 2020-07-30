@@ -13,7 +13,7 @@ export interface CreateCapabilityParam {
   retrieable?: boolean;
   capabilityResources?: {};
   semantics?: Discovery.Semantics;
-  configuration?: {} | Discovery.ThermostatCapabilityConfiguration;
+  configuration?: {} | Discovery.ThermostatCapabilityConfiguration | Discovery.RangeCapabilityConfiguration;
 }
 
 /**
@@ -117,17 +117,6 @@ export const CurtainToggleControllerPreset = createCapability({
   interface: 'Alexa.ToggleController',
   instance: 'Curtain',
   supportedProperties: ['toggleState'],
-  capabilityResources: {
-    friendlyNames: [
-      {
-        '@type': 'text',
-        value: {
-          text: 'カーテン',
-          locale: 'ja-JP',
-        },
-      },
-    ],
-  },
   semantics: {
     actionMappings: [
       {
@@ -159,8 +148,8 @@ export const CurtainToggleControllerPreset = createCapability({
         value: 'ON',
       },
     ],
-  },
-});
+  }
+})
 
 /**
  * ThermostatController preset with default value 
@@ -183,7 +172,66 @@ export const ThermostatControllerPreset = createCapability({
     ],
     supportsScheduling: false
   }
-});
+})
+
+/**
+ * Preset Fan (Low, Medium, High)
+ */
+export const FanRangeControllerPreset = createCapability({
+  interface: 'Alexa.RangeController',
+  instance: 'Fan.speedLevel',
+  supportedProperties: [
+    'rangeValue'
+  ],
+  configuration: {
+    supportedRange: {
+      minimumValue: 1,
+      maximumValue: 10,
+      precision: 1
+    },
+    presets: [
+      {
+        rangeValue: 2,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Low'
+              }
+            }
+          ]
+        }
+      },
+      {
+        rangeValue: 5,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Medium'
+              }
+            }
+          ]
+        }
+      },
+      {
+        rangeValue: 10,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.High'
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+})
 
 /**
  * Getting Devices from Device Cloud
