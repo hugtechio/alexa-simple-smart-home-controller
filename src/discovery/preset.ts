@@ -13,6 +13,7 @@ export interface CreateCapabilityParam {
   retrieable?: boolean;
   capabilityResources?: {};
   semantics?: Discovery.Semantics;
+  configuration?: {} | Discovery.ThermostatControllerConfiguration;
 }
 
 /**
@@ -47,6 +48,11 @@ export function createCapability(
   if (param.semantics) {
     capability.semantics = param.semantics;
   }
+
+  if (param.configuration) {
+    capability.configuration = param.configuration
+  }
+
   if (param.supportedProperties) {
     capability.properties = {
       supported: param.supportedProperties.map(p => {
@@ -167,6 +173,9 @@ export const ThermostatControllerPreset = createCapability({
     'upperSetpoint',
     'thermostatMode',
   ],
+  configuration: {
+    supportedModes: ['']
+  }
 });
 
 /**

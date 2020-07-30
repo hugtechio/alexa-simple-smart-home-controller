@@ -159,7 +159,7 @@ export interface Capability {
   version: string;
   properties?: Properties;
   capabilityResources?: {};
-  configuration?: {};
+  configuration?: {} | ThermostatControllerConfiguration;
   verificationsRequired?: {};
   semantics?: Semantics;
 }
@@ -236,4 +236,23 @@ export type StateMappingType = 'StatesToValue' | 'StatesToRange';
 /**
  * Value of state mapping state
  */
-export type StateMappingState = 'Alexa.States.Open' | 'Alexa.States.Closed';
+export type StateMappingState = 'Alexa.States.Open' | 'Alexa.States.Closed'
+
+/**
+ * Thermostat capability configuration 
+ * (This is required on Discovery interface)
+ */
+export interface ThermostatControllerConfiguration {
+  supportedModes: ThermostatMode;
+  supportsScheduling: boolean;
+}
+
+/**
+ * Thermo stat mode
+ */
+export type ThermostatMode = 
+    | 'AUTO'
+    | 'COOL'
+    | 'HEAT'
+    | 'ECO'
+    | 'OFF'
