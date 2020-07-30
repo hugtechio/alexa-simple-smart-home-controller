@@ -176,8 +176,12 @@ export const ThermostatControllerPreset = createCapability({
   configuration: {
     supportedModes: [
       'AUTO',
-      ''
-    ]
+      'COOL',
+      'ECO',
+      'HEAT',
+      'OFF'
+    ],
+    supportsScheduling: false
   }
 });
 
