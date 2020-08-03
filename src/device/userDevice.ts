@@ -20,9 +20,9 @@ export interface IUserDevice {
  * Base class of User Device
  */
 export class UserDevice implements IUserDevice {
-  protected event: Device.ControllerRequestEvent;
+  protected event: Device.ControllerRequestEvent
   constructor(event: Device.ControllerRequestEvent) {
-    this.event = event;
+    this.event = event
   }
 
   public async sendSignal(): Promise<Device.ResponseEvent | {}> {

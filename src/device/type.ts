@@ -160,3 +160,18 @@ export type TokenType = 'BearerToken' | string;
 export interface Cookie {
   [key: string]: string;
 }
+
+/**
+ * device action helpers (to simplify implementation 
+ * of action mapping between from alexa to device)
+ */
+export type DeviceAction = any
+export type DeviceActionMatcher = (param: DeviceActionMatherParam) => DeviceAction
+export interface DeviceActionMatherParam {
+  deviceActions: any
+  valueFromAlexa: any
+}
+
+export interface ActionMapping {
+  [name: string]: DeviceActionMatcher
+}
