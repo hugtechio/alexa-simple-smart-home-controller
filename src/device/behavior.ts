@@ -17,8 +17,8 @@ import * as Device from './type';
  * }
  */
 export type DeviceBehaviorDefinition = {
-  [namespace in ControllerNameSpace]: {
-    [name in ControllerDirectiveName]: DeviceBehavior;
+  [namespace in ControllerNameSpace]?: {
+    [name in ControllerDirectiveName]?: DeviceBehavior;
   };
 };
 
