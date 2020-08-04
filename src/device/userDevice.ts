@@ -1,4 +1,4 @@
-import { ControllerResponseName } from '../namespace';
+import { ControllerResponseName, ControllerErrorResponseType } from '../namespace';
 
 import * as Device from './index';
 
@@ -52,5 +52,25 @@ export abstract class UserDevice implements IUserDevice {
       payloadVersion: '3',
       correlationToken: this.event.directive.header.correlationToken,
     };
+  }
+
+  /**
+   * 
+   * @param type Type of Error
+   * @param message error message
+   */
+  protected getErrorResponse(type: ControllerErrorResponseType, message: string): Device.Response {
+    return {
+      event: {
+        header: this.getResponseHeader('ErrorResponse'),
+        endpoint: {
+          endpointId: this.endpointId
+        },
+        payload: {
+          type: type,
+          message: message
+        }
+      }
+    }
   }
 }
