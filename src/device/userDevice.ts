@@ -1,6 +1,5 @@
 import {
   ControllerResponseName,
-  ControllerResponseNameSpace,
   ControllerErrorResponseType,
 } from '../namespace';
 
