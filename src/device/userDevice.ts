@@ -1,6 +1,10 @@
-import { ControllerResponseName, ControllerErrorResponseType } from '../namespace';
+import {
+  ControllerResponseName,
+  ControllerResponseNameSpace,
+} from '../namespace';
 
 import * as Device from './index';
+import { ControllerRequestEvent } from './type';
 
 /**
  * DeviceSearchFunction is a logic of finding a target device from Alexa's controller Request.
@@ -20,21 +24,35 @@ export interface IUserDevice {
 }
 
 /**
+ * Parameter of constructor UserDevice class
+ */
+export interface UserDeviceParam {
+  event: ControllerRequestEvent;
+  isAsyncResponse?: boolean;
+}
+
+/**
+ * GetErrorResponseParam in UserDevice class
+ */
+interface UserDeviceGetErrorResponseParam {
+  type: ControllerResponseNameSpace;
+  message: string;
+}
+
+/**
  * Base class of User Device
  */
 export abstract class UserDevice implements IUserDevice {
-  protected event: Device.ControllerRequestEvent;
-  protected endpointId: string;
-  constructor(event: Device.ControllerRequestEvent) {
-    this.event = event;
-    this.endpointId = event.directive.endpoint.endpointId;
+  protected readonly config: UserDeviceParam;
+  constructor(param: Device.UserDeviceParam) {
+    this.config = param;
   }
 
   /**
    * endpoint Id
    */
   public getEndpointId(): string {
-    return this.endpointId;
+    return this.config.event.directive.endpoint.endpointId;
   }
 
   public abstract async sendSignal(): Promise<Device.Response>;
@@ -48,29 +66,38 @@ export abstract class UserDevice implements IUserDevice {
     return {
       namespace: 'Alexa',
       name: name,
-      messageId: this.event.directive.header.messageId + '-R',
+      messageId: this.config.event.directive.header.messageId + '-R',
       payloadVersion: '3',
-      correlationToken: this.event.directive.header.correlationToken,
+      correlationToken: this.config.event.directive.header.correlationToken,
     };
   }
 
   /**
-   * 
-   * @param type Type of Error
-   * @param message error message
+   * switch endpoint for esponse between sync and async
    */
-  protected getErrorResponse(type: ControllerErrorResponseType, message: string): Device.Response {
+  protected getResponseEndpoint() {
+    return this.config.isAsyncResponse
+      ? this.config.event.directive.endpoint
+      : {
+          endpointId: this.config.event.directive.endpoint.endpointId,
+        };
+  }
+  /**
+   * Error sResponse
+   * @param param UserDeviceGetErrorResponseParam
+   */
+  protected getErrorResponse(
+    param: UserDeviceGetErrorResponseParam
+  ): Device.Response {
     return {
       event: {
         header: this.getResponseHeader('ErrorResponse'),
-        endpoint: {
-          endpointId: this.endpointId
-        },
+        endpoint: this.getResponseEndpoint(),
         payload: {
-          type: type,
-          message: message
-        }
-      }
-    }
+          type: param.type,
+          message: param.message,
+        },
+      },
+    };
   }
 }
