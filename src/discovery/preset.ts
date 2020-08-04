@@ -89,12 +89,12 @@ export const BrightnessControllerPreset = createCapability({
 });
 
 /**
- * Preset Fan (Low, Medium, High)
+ * Discovery preset of the light which has a fan
  */
-export const LightWithFanRangeControllerPreset = createCapability({
-  interface: 'Alexa.RangeController',
+export const FanOnLightToggleControllerPreset = createCapability({
+  interface: 'Alexa.ToggleController',
   instance: 'LightFan.switch',
-  supportedProperties: ['rangeValue'],
+  supportedProperties: ['toggleState'],
   capabilityResources: {
     friendlyNames: [
       {
@@ -106,41 +106,36 @@ export const LightWithFanRangeControllerPreset = createCapability({
       },
     ],
   },
-  configuration: {
-    supportedRange: {
-      minimumValue: 1,
-      maximumValue: 10,
-      precision: 1,
-    },
-    presets: [
+  semantics: {
+    actionMappings: [
       {
-        rangeValue: 0,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'text',
-              value: {
-                text: '消して',
-                locale: 'ja-JP'
-              },
-            },
-          ],
+        '@type': 'ActionsToDirective',
+        actions: ['Alexa.Actions.Close'],
+        directive: {
+          name: 'TurnOff',
+          payload: {},
         },
       },
       {
-        rangeValue: 10,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'text',
-              value: {
-                text: '点けて',
-                locale: 'ja-JP'
-              },
-            },
-          ],
+        '@type': 'ActionsToDirective',
+        actions: ['Alexa.Actions.Open'],
+        directive: {
+          name: 'TurnOn',
+          payload: {},
         },
-      }
+      },
+    ],
+    stateMappings: [
+      {
+        '@type': 'StatesToValue',
+        states: ['Alexa.States.Closed'],
+        value: 'OFF',
+      },
+      {
+        '@type': 'StatesToValue',
+        states: ['Alexa.States.Open'],
+        value: 'ON',
+      },
     ],
   },
 });
