@@ -3,6 +3,7 @@ import {
   ControllerResponseNameSpace,
   ControllerResponseName,
   ControllerErrorResponseType,
+  ControllerDirectiveName,
 } from '../namespace';
 
 /**
@@ -31,7 +32,7 @@ export interface Directive {
  */
 export interface DirectiveRequestHeader {
   namespace: ControllerNameSpace;
-  name: string;
+  name: ControllerDirectiveName;
   payloadVersion: string;
   messageId: string;
   correlationToken: string;

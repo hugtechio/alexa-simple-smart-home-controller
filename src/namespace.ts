@@ -76,12 +76,12 @@ export type ControllerErrorResponseType =
   | 'RATE_LIMIT_EXCEEDED'
   | 'TEMPERATURE_VALUE_OUT_OF_RANGE'
   | 'TOO_MANY_FAILED_ATTEMPTS'
-  | 'VALUE_OUT_OF_RANGE'
+  | 'VALUE_OUT_OF_RANGE';
 
 /**
  * Controller Directive names (currently not cover all names)
  */
-export type ControllerDirectiveName = 
+export type ControllerDirectiveName =
   | 'TurnOn'
   | 'TurnOff'
   | 'SetBrightness'
@@ -93,4 +93,4 @@ export type ControllerDirectiveName =
   | 'SetTargetTemperature'
   | 'AdjustTargetTemperature'
   | 'SetThermostatMode'
-  | 'ResumeSchedule'
+  | 'ResumeSchedule';

@@ -19,7 +19,6 @@ export type DeviceSearchFunction = (
  * sendSignal method is called automatically
  */
 export interface IUserDevice {
-  getEndpointId(): string;
   sendSignal(): Promise<Device.Response>;
 }
 
@@ -53,6 +52,21 @@ export abstract class UserDevice implements IUserDevice {
    */
   public getEndpointId(): string {
     return this.config.event.directive.endpoint.endpointId;
+  }
+
+  /**
+   * for more declarative approach, You can use this method.
+   * @param behaviorDefinition mapping between alexa directive and device cloud action
+   */
+  protected async doDeviceAction(
+    behaviorDefinition: Device.DeviceBehaviorDefinition
+  ): Promise<Device.Response> {
+    const { namespace, name } = this.config.event.directive.header;
+
+    const response = await behaviorDefinition[namespace][name](
+      this.config.event.directive
+    );
+    return response;
   }
 
   public abstract async sendSignal(): Promise<Device.Response>;
