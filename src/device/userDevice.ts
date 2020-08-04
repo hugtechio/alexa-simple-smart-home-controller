@@ -1,6 +1,7 @@
 import {
   ControllerResponseName,
   ControllerResponseNameSpace,
+  ControllerErrorResponseType,
 } from '../namespace';
 
 import * as Device from './index';
@@ -35,7 +36,7 @@ export interface UserDeviceParam {
  * GetErrorResponseParam in UserDevice class
  */
 interface UserDeviceGetErrorResponseParam {
-  type: ControllerResponseNameSpace;
+  type: ControllerErrorResponseType;
   message: string;
 }
 
