@@ -19,6 +19,7 @@ export type DeviceSearchFunction = (
  * sendSignal method is called automatically
  */
 export interface IUserDevice {
+  getEndpointId(): string;
   sendSignal(): Promise<Device.Response>;
 }
 
