@@ -63,7 +63,9 @@ export abstract class UserDevice implements IUserDevice {
     behaviorDefinition: Device.DeviceBehaviorDefinition
   ): Promise<Device.Response> {
     const { namespace, name } = this.config.event.directive.header;
+    if (Object.keys(behaviorDefinition).length <= 0) throw Error('error');
 
+    // @ts-ignore
     const response = await behaviorDefinition[namespace][name](
       this.config.event.directive
     );
