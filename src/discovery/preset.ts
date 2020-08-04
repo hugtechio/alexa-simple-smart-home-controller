@@ -13,7 +13,10 @@ export interface CreateCapabilityParam {
   retrieable?: boolean;
   capabilityResources?: {};
   semantics?: Discovery.Semantics;
-  configuration?: {} | Discovery.ThermostatCapabilityConfiguration | Discovery.RangeCapabilityConfiguration;
+  configuration?:
+    | {}
+    | Discovery.ThermostatCapabilityConfiguration
+    | Discovery.RangeCapabilityConfiguration;
 }
 
 /**
@@ -50,7 +53,7 @@ export function createCapability(
   }
 
   if (param.configuration) {
-    capability.configuration = param.configuration
+    capability.configuration = param.configuration;
   }
 
   if (param.supportedProperties) {
@@ -69,17 +72,17 @@ export function createCapability(
  * Controller directive presets
  */
 
- /**
-  * PowerController with default value
-  */
+/**
+ * PowerController with default value
+ */
 export const PowerControllerPreset = createCapability({
   interface: 'Alexa.PowerController',
   supportedProperties: ['powerState'],
 });
 
- /**
-  * BrightnessController with default value
-  */
+/**
+ * BrightnessController with default value
+ */
 export const BrightnessControllerPreset = createCapability({
   interface: 'Alexa.BrightnessController',
   supportedProperties: ['brightness'],
@@ -110,7 +113,7 @@ export const SpeakerPreset = createCapability({
 
 /**
  * Custom preset for Curtain device
- * This preset can accept 'Open', 'Close' utterance 
+ * This preset can accept 'Open', 'Close' utterance
  * Note: only compatible ja-JP locale
  */
 export const CurtainToggleControllerPreset = createCapability({
@@ -123,10 +126,10 @@ export const CurtainToggleControllerPreset = createCapability({
         '@type': 'text',
         value: {
           text: 'カーテン',
-          locale: 'ja-JP'
-        }
-      }
-    ]
+          locale: 'ja-JP',
+        },
+      },
+    ],
   },
   semantics: {
     actionMappings: [
@@ -159,11 +162,11 @@ export const CurtainToggleControllerPreset = createCapability({
         value: 'ON',
       },
     ],
-  }
-})
+  },
+});
 
 /**
- * ThermostatController preset with default value 
+ * ThermostatController preset with default value
  */
 export const ThermostatControllerPreset = createCapability({
   interface: 'Alexa.ThermostatController',
@@ -174,16 +177,10 @@ export const ThermostatControllerPreset = createCapability({
     'thermostatMode',
   ],
   configuration: {
-    supportedModes: [
-      'AUTO',
-      'COOL',
-      'ECO',
-      'HEAT',
-      'OFF'
-    ],
-    supportsScheduling: false
-  }
-})
+    supportedModes: ['AUTO', 'COOL', 'ECO', 'HEAT', 'OFF'],
+    supportsScheduling: false,
+  },
+});
 
 /**
  * Preset Fan (Low, Medium, High)
@@ -191,25 +188,23 @@ export const ThermostatControllerPreset = createCapability({
 export const FanRangeControllerPreset = createCapability({
   interface: 'Alexa.RangeController',
   instance: 'Fan.speed',
-  supportedProperties: [
-    'rangeValue'
-  ],
+  supportedProperties: ['rangeValue'],
   capabilityResources: {
     friendlyNames: [
       {
         '@type': 'text',
         value: {
           text: '扇風機',
-          locale: 'ja-JP'
-        }
-      }
-    ]
+          locale: 'ja-JP',
+        },
+      },
+    ],
   },
   configuration: {
     supportedRange: {
       minimumValue: 1,
       maximumValue: 10,
-      precision: 1
+      precision: 1,
     },
     presets: [
       {
@@ -219,11 +214,11 @@ export const FanRangeControllerPreset = createCapability({
             {
               '@type': 'asset',
               value: {
-                assetId: 'Alexa.Value.Low'
-              }
-            }
-          ]
-        }
+                assetId: 'Alexa.Value.Low',
+              },
+            },
+          ],
+        },
       },
       {
         rangeValue: 5,
@@ -232,11 +227,11 @@ export const FanRangeControllerPreset = createCapability({
             {
               '@type': 'asset',
               value: {
-                assetId: 'Alexa.Value.Medium'
-              }
-            }
-          ]
-        }
+                assetId: 'Alexa.Value.Medium',
+              },
+            },
+          ],
+        },
       },
       {
         rangeValue: 10,
@@ -245,15 +240,15 @@ export const FanRangeControllerPreset = createCapability({
             {
               '@type': 'asset',
               value: {
-                assetId: 'Alexa.Value.High'
-              }
-            }
-          ]
-        }
-      }
-    ]
-  }
-})
+                assetId: 'Alexa.Value.High',
+              },
+            },
+          ],
+        },
+      },
+    ],
+  },
+});
 
 /**
  * Getting Devices from Device Cloud

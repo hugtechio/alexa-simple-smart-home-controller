@@ -23,7 +23,7 @@ export interface DiscoveryRequestEvent {
 }
 
 /**
- * Directive object in DiscoveryRequest 
+ * Directive object in DiscoveryRequest
  */
 export interface DiscoveryRequestDirective {
   header: Header;
@@ -31,14 +31,14 @@ export interface DiscoveryRequestDirective {
 }
 
 /**
- * Payload object in DiscoveryRequest 
+ * Payload object in DiscoveryRequest
  */
 export interface DiscoveryRequestPayload {
   scope: TokenScope | any;
 }
 
 /**
- * TokenScope 
+ * TokenScope
  */
 export interface TokenScope {
   type: TokenType;
@@ -46,7 +46,7 @@ export interface TokenScope {
 }
 
 /**
- * Type of token 
+ * Type of token
  */
 export type TokenType = 'BearerToken' | string;
 
@@ -64,10 +64,24 @@ export interface Header {
  * Discovery Response
  */
 export interface Response {
+  event: ResponseEvent;
+  context?: ResponseContext;
+}
+
+/**
+ * Discovery Response event object
+ */
+export interface ResponseEvent {
   header: Header;
   payload: Payload;
 }
 
+/**
+ * Discovery Response context object
+ */
+export interface ResponseContext {
+  [name: string]: any;
+}
 /**
  * Discovery Response Payload
  */
@@ -159,7 +173,10 @@ export interface Capability {
   version: string;
   properties?: Properties;
   capabilityResources?: {};
-  configuration?: {} | ThermostatCapabilityConfiguration | RangeCapabilityConfiguration;
+  configuration?:
+    | {}
+    | ThermostatCapabilityConfiguration
+    | RangeCapabilityConfiguration;
   verificationsRequired?: {};
   semantics?: Semantics;
 }
@@ -236,10 +253,10 @@ export type StateMappingType = 'StatesToValue' | 'StatesToRange';
 /**
  * Value of state mapping state
  */
-export type StateMappingState = 'Alexa.States.Open' | 'Alexa.States.Closed'
+export type StateMappingState = 'Alexa.States.Open' | 'Alexa.States.Closed';
 
 /**
- * Thermostat capability configuration 
+ * Thermostat capability configuration
  * (This is required on Discovery interface)
  */
 export interface ThermostatCapabilityConfiguration {
@@ -252,102 +269,99 @@ export interface RangeCapabilityConfiguration {
     minimumValue: number;
     maximumValue: number;
     precision: number;
-  },
+  };
   presets: RangeCapabilityConfigurationPreset[];
 }
 
 export interface RangeCapabilityConfigurationPreset {
   rangeValue: number;
   presetResources: {
-    friendlyNames: PresetResourceFriendlyName[]
-  }
+    friendlyNames: PresetResourceFriendlyName[];
+  };
 }
 
-export type PresetResourceFriendlyName = PresetResourceAlexaAsset | PresetResourceCustomAsset 
+export type PresetResourceFriendlyName =
+  | PresetResourceAlexaAsset
+  | PresetResourceCustomAsset;
 
 /**
  * Thermo stat mode
  */
-export type ThermostatMode = 
-    | 'AUTO'
-    | 'COOL'
-    | 'HEAT'
-    | 'ECO'
-    | 'OFF'
+export type ThermostatMode = 'AUTO' | 'COOL' | 'HEAT' | 'ECO' | 'OFF';
 
-export type PresetResourceType = 'asset' | 'text'
+export type PresetResourceType = 'asset' | 'text';
 
 export interface PresetResourceAlexaAsset {
-  '@type': 'asset',
+  '@type': 'asset';
   value: {
     assetId: AssetId;
-  }
+  };
 }
 
 export interface PresetResourceCustomAsset {
-  '@type': 'text'
+  '@type': 'text';
   value: {
     text: string;
     locale: string;
-  }
+  };
 }
 
-export type AssetId = 
-| 'Alexa.DeviceName.AirPurifier'
-| 'Alexa.DeviceName.Fan'
-| 'Alexa.DeviceName.Router'
-| 'Alexa.DeviceName.Shade'
-| 'Alexa.DeviceName.Shower'
-| 'Alexa.DeviceName.SpaceHeater'
-| 'Alexa.DeviceName.Washer'
-| 'Alexa.Setting.2GGuestWiFi'
-| 'Alexa.Setting.5GGuestWiFi'
-| 'Alexa.Setting.Auto'
-| 'Alexa.Setting.Direction'
-| 'Alexa.Setting.DryCycle'
-| 'Alexa.Setting.FanSpeed'
-| 'Alexa.Setting.GuestWiFi'
-| 'Alexa.Setting.Heat'
-| 'Alexa.Setting.Mode'
-| 'Alexa.Setting.Night'
-| 'Alexa.Setting.Opening'
-| 'Alexa.Setting.Oscillate'
-| 'Alexa.Setting.Preset'
-| 'Alexa.Setting.Quiet'
-| 'Alexa.Setting.Temperature'
-| 'Alexa.Setting.WashCycle'
-| 'Alexa.Setting.WaterTemperature'
-| 'Alexa.Shower.HandHeld'
-| 'Alexa.Shower.RainHead'
-| 'Alexa.Unit.Angle.Degrees'
-| 'Alexa.Unit.Angle.Radians'
-| 'Alexa.Unit.Distance.Feet'
-| 'Alexa.Unit.Distance.Inches'
-| 'Alexa.Unit.Distance.Kilometers'
-| 'Alexa.Unit.Distance.Meters'
-| 'Alexa.Unit.Distance.Miles'
-| 'Alexa.Unit.Distance.Yards'
-| 'Alexa.Unit.Mass.Grams'
-| 'Alexa.Unit.Mass.Kilograms'
-| 'Alexa.Unit.Percent'
-| 'Alexa.Unit.Temperature.Celsius'
-| 'Alexa.Unit.Temperature.Degrees'
-| 'Alexa.Unit.Temperature.Fahrenheit'
-| 'Alexa.Unit.Temperature.Kelvin'
-| 'Alexa.Unit.Volume.CubicFeet'
-| 'Alexa.Unit.Volume.CubicMeters'
-| 'Alexa.Unit.Volume.Gallons'
-| 'Alexa.Unit.Volume.Liters'
-| 'Alexa.Unit.Volume.Pints'
-| 'Alexa.Unit.Volume.Quarts'
-| 'Alexa.Unit.Weight.Ounces'
-| 'Alexa.Unit.Weight.Pounds'
-| 'Alexa.Value.Close'
-| 'Alexa.Value.Delicate'
-| 'Alexa.Value.High'
-| 'Alexa.Value.Low'
-| 'Alexa.Value.Maximum'
-| 'Alexa.Value.Medium'
-| 'Alexa.Value.Minimum'
-| 'Alexa.Value.Open'
-| 'Alexa.Value.QuickWash'
+export type AssetId =
+  | 'Alexa.DeviceName.AirPurifier'
+  | 'Alexa.DeviceName.Fan'
+  | 'Alexa.DeviceName.Router'
+  | 'Alexa.DeviceName.Shade'
+  | 'Alexa.DeviceName.Shower'
+  | 'Alexa.DeviceName.SpaceHeater'
+  | 'Alexa.DeviceName.Washer'
+  | 'Alexa.Setting.2GGuestWiFi'
+  | 'Alexa.Setting.5GGuestWiFi'
+  | 'Alexa.Setting.Auto'
+  | 'Alexa.Setting.Direction'
+  | 'Alexa.Setting.DryCycle'
+  | 'Alexa.Setting.FanSpeed'
+  | 'Alexa.Setting.GuestWiFi'
+  | 'Alexa.Setting.Heat'
+  | 'Alexa.Setting.Mode'
+  | 'Alexa.Setting.Night'
+  | 'Alexa.Setting.Opening'
+  | 'Alexa.Setting.Oscillate'
+  | 'Alexa.Setting.Preset'
+  | 'Alexa.Setting.Quiet'
+  | 'Alexa.Setting.Temperature'
+  | 'Alexa.Setting.WashCycle'
+  | 'Alexa.Setting.WaterTemperature'
+  | 'Alexa.Shower.HandHeld'
+  | 'Alexa.Shower.RainHead'
+  | 'Alexa.Unit.Angle.Degrees'
+  | 'Alexa.Unit.Angle.Radians'
+  | 'Alexa.Unit.Distance.Feet'
+  | 'Alexa.Unit.Distance.Inches'
+  | 'Alexa.Unit.Distance.Kilometers'
+  | 'Alexa.Unit.Distance.Meters'
+  | 'Alexa.Unit.Distance.Miles'
+  | 'Alexa.Unit.Distance.Yards'
+  | 'Alexa.Unit.Mass.Grams'
+  | 'Alexa.Unit.Mass.Kilograms'
+  | 'Alexa.Unit.Percent'
+  | 'Alexa.Unit.Temperature.Celsius'
+  | 'Alexa.Unit.Temperature.Degrees'
+  | 'Alexa.Unit.Temperature.Fahrenheit'
+  | 'Alexa.Unit.Temperature.Kelvin'
+  | 'Alexa.Unit.Volume.CubicFeet'
+  | 'Alexa.Unit.Volume.CubicMeters'
+  | 'Alexa.Unit.Volume.Gallons'
+  | 'Alexa.Unit.Volume.Liters'
+  | 'Alexa.Unit.Volume.Pints'
+  | 'Alexa.Unit.Volume.Quarts'
+  | 'Alexa.Unit.Weight.Ounces'
+  | 'Alexa.Unit.Weight.Pounds'
+  | 'Alexa.Value.Close'
+  | 'Alexa.Value.Delicate'
+  | 'Alexa.Value.High'
+  | 'Alexa.Value.Low'
+  | 'Alexa.Value.Maximum'
+  | 'Alexa.Value.Medium'
+  | 'Alexa.Value.Minimum'
+  | 'Alexa.Value.Open'
+  | 'Alexa.Value.QuickWash';

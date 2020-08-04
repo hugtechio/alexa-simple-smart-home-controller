@@ -2,7 +2,7 @@ import {
   ControllerNameSpace,
   ControllerResponseNameSpace,
   ControllerResponseName,
-  ControllerErrorResponseType
+  ControllerErrorResponseType,
 } from '../namespace';
 
 /**
@@ -11,7 +11,7 @@ import {
 export type ControllerHeaderName = 'Response';
 
 /**
- * Request of the Controller interface from Alexa Cloud 
+ * Request of the Controller interface from Alexa Cloud
  */
 export interface ControllerRequestEvent {
   directive: Directive;
@@ -79,12 +79,13 @@ export interface Property {
 export interface ResponseEvent {
   header: Header;
   endpoint: Endpoint;
-  payload: {}
+  payload:
+    | {}
     | ResponseEventErrorPayload
     | EndpointLowPowerErrorPayload
     | NotSupportInCurrentModePayload
     | TemperatureValueOutOfRangePayload
-    | ValueOutOfRangePayload
+    | ValueOutOfRangePayload;
 }
 
 export interface ResponseEventErrorPayload {
@@ -92,32 +93,35 @@ export interface ResponseEventErrorPayload {
   message: string;
 }
 
-export interface EndpointLowPowerErrorPayload extends ResponseEventErrorPayload {
+export interface EndpointLowPowerErrorPayload
+  extends ResponseEventErrorPayload {
   percentageState: number;
 }
 
-export interface NotSupportInCurrentModePayload extends ResponseEventErrorPayload {
+export interface NotSupportInCurrentModePayload
+  extends ResponseEventErrorPayload {
   currentDeviceMode: string;
 }
 
-export interface TemperatureValueOutOfRangePayload extends ResponseEventErrorPayload {
+export interface TemperatureValueOutOfRangePayload
+  extends ResponseEventErrorPayload {
   validRange: {
     minimumValue: {
       value: number;
       scale: string;
-    },
+    };
     maximumValue: {
       value: number;
       scale: string;
-    }
-  }
+    };
+  };
 }
 
 export interface ValueOutOfRangePayload extends ResponseEventErrorPayload {
   validRange: {
     minimumValue: number;
     maximumValue: number;
-  }
+  };
 }
 
 /**
@@ -127,17 +131,17 @@ export interface Header {
   namespace: ControllerResponseNameSpace;
   name: ControllerResponseName;
   payloadVersion: string;
-  correlationToken: string;
+  correlationToken?: string;
   messageId: string;
 }
 
 /**
- * Endpoint object in the Controller response 
+ * Endpoint object in the Controller response
  */
 export interface Endpoint {
-  scope: TokenScope | any;
+  scope?: TokenScope | any;
   endpointId: string;
-  cookie: Cookie;
+  cookie?: Cookie;
 }
 
 /**
@@ -153,7 +157,6 @@ export interface TokenScope {
  */
 export type TokenType = 'BearerToken' | string;
 
-
 /**
  * Cookie object
  */
@@ -162,16 +165,18 @@ export interface Cookie {
 }
 
 /**
- * device action helpers (to simplify implementation 
+ * device action helpers (to simplify implementation
  * of action mapping between from alexa to device)
  */
-export type DeviceAction = any
-export type DeviceActionMatcher = (param: DeviceActionMatherParam) => DeviceAction
+export type DeviceAction = any;
+export type DeviceActionMatcher = (
+  param: DeviceActionMatherParam
+) => DeviceAction;
 export interface DeviceActionMatherParam {
-  deviceActions: any
-  valueFromAlexa: any
+  deviceActions: any;
+  valueFromAlexa: any;
 }
 
 export interface ActionMapping {
-  [name: string]: DeviceActionMatcher
+  [name: string]: DeviceActionMatcher;
 }
