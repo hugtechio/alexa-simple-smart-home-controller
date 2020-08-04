@@ -89,6 +89,63 @@ export const BrightnessControllerPreset = createCapability({
 });
 
 /**
+ * Preset Fan (Low, Medium, High)
+ */
+export const LightWithFanRangeControllerPreset = createCapability({
+  interface: 'Alexa.RangeController',
+  instance: 'LightFan.switch',
+  supportedProperties: ['rangeValue'],
+  capabilityResources: {
+    friendlyNames: [
+      {
+        '@type': 'text',
+        value: {
+          text: 'ファン',
+          locale: 'ja-JP',
+        },
+      },
+    ],
+  },
+  configuration: {
+    supportedRange: {
+      minimumValue: 1,
+      maximumValue: 10,
+      precision: 1,
+    },
+    presets: [
+      {
+        rangeValue: 0,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '消して',
+                locale: 'ja-JP'
+              },
+            },
+          ],
+        },
+      },
+      {
+        rangeValue: 10,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '点けて',
+                locale: 'ja-JP'
+              },
+            },
+          ],
+        },
+      }
+    ],
+  },
+});
+
+/**
  * ChannelController with default value
  */
 export const ChannelControllerPreset = createCapability({
