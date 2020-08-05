@@ -216,7 +216,7 @@ export const CurtainRangeControllerPreset = createCapability({
         directive: {
           name: 'SetRangeValue',
           payload: {
-            rangeValue: 100,
+            rangeValue: 5,
           },
         },
       },
