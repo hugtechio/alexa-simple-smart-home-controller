@@ -260,6 +260,19 @@ export const FanRangeControllerPreset = createCapability({
     },
     presets: [
       {
+        rangeValue: 1,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Minimum',
+              },
+            },
+          ],
+        },
+      },
+      {
         rangeValue: 2,
         presetResources: {
           friendlyNames: [
@@ -286,13 +299,26 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 10,
+        rangeValue: 8,
         presetResources: {
           friendlyNames: [
             {
               '@type': 'asset',
               value: {
                 assetId: 'Alexa.Value.High',
+              },
+            },
+          ],
+        },
+      },
+      {
+        rangeValue: 10,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Maximum',
               },
             },
           ],
