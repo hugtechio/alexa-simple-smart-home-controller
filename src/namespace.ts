@@ -97,4 +97,6 @@ export type ControllerDirectiveName =
   | 'SkipChannels'
   | 'ChangeChannel'
   | 'AdjustVolue'
-  | 'SetMute';
+  | 'SetMute'
+  | 'SetVolume'
+  | 'AdjustVolume';
