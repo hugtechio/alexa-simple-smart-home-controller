@@ -240,6 +240,42 @@ export const CurtainRangeControllerPreset = createCapability({
       },
     ],
   },
+  semantics: {
+    actionMappings: [
+      {
+        '@type': 'ActionsToDirective',
+        actions: ['Alexa.Actions.Open'],
+        directive: {
+          name: 'SetRangeValue',
+          payload: {
+            rangeValue: 1,
+          },
+        },
+      },
+      {
+        '@type': 'ActionsToDirective',
+        actions: ['Alexa.Actions.Close'],
+        directive: {
+          name: 'SetRangeValue',
+          payload: {
+            rangeValue: 2,
+          },
+        },
+      },
+    ],
+    stateMappings: [
+      {
+        '@type': 'StatesToValue',
+        states: ['Alexa.States.Open'],
+        value: 1,
+      },
+      {
+        '@type': 'StatesToValue',
+        states: ['Alexa.States.Closed'],
+        value: 2,
+      },
+    ],
+  },
 });
 
 /**
