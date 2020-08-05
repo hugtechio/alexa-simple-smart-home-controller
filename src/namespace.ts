@@ -93,4 +93,8 @@ export type ControllerDirectiveName =
   | 'SetTargetTemperature'
   | 'AdjustTargetTemperature'
   | 'SetThermostatMode'
-  | 'ResumeSchedule';
+  | 'ResumeSchedule'
+  | 'SkipChannels'
+  | 'ChangeChannel'
+  | 'AdjustVolue'
+  | 'SetMute';
