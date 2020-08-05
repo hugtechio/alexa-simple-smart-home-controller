@@ -96,7 +96,7 @@ export type ControllerDirectiveName =
   | 'ResumeSchedule'
   | 'SkipChannels'
   | 'ChangeChannel'
-  | 'AdjustVolue'
+  | 'AdjustVolume'
   | 'SetMute'
   | 'SetVolume'
   | 'AdjustVolume';
