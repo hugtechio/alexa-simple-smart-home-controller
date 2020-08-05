@@ -37,10 +37,8 @@ export const handler = async (event, context) => {
     DeviceCloud.searchFunc
   )
 
-  const response = {
-    event: await controller.run()
-  }
-  context.succeed(response)
+  const response = await controller.run()
+  return response
 };
 ```
 
