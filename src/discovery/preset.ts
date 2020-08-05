@@ -197,6 +197,7 @@ export const CurtainRangeControllerPreset = createCapability({
       maximumValue: 5,
       precision: 1,
     },
+    unitOfMeasure: 'Alexa.Unit.Percent',
     presets: [
       {
         rangeValue: 1,

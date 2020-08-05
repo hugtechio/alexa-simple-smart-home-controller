@@ -288,6 +288,7 @@ export interface RangeCapabilityConfiguration {
     precision: number;
   };
   presets: RangeCapabilityConfigurationPreset[];
+  unitOfMeasure: AssetId;
 }
 
 export interface RangeCapabilityConfigurationPreset {
