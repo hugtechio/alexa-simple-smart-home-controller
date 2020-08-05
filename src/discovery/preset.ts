@@ -173,13 +173,13 @@ export const SpeakerPreset = createCapability({
 
 /**
  * Custom preset for Curtain device
- * This preset can accept 'Open', 'Close' utterance
+ * This preset can accept 'Open', 'Close', 'Stop' utterance
  * Note: only compatible ja-JP locale
  */
-export const CurtainToggleControllerPreset = createCapability({
-  interface: 'Alexa.ToggleController',
+export const CurtainRangeControllerPreset = createCapability({
+  interface: 'Alexa.RangeController',
   instance: 'Curtain',
-  supportedProperties: ['toggleState'],
+  supportedProperties: ['rangeValue'],
   capabilityResources: {
     friendlyNames: [
       {
@@ -191,35 +191,59 @@ export const CurtainToggleControllerPreset = createCapability({
       },
     ],
   },
-  semantics: {
-    actionMappings: [
+  configuration: {
+    supportedRange: {
+      minimumValue: 1,
+      maximumValue: 5,
+      precision: 1,
+    },
+    presets: [
       {
-        '@type': 'ActionsToDirective',
-        actions: ['Alexa.Actions.Close'],
-        directive: {
-          name: 'TurnOff',
-          payload: {},
+        rangeValue: 1,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Open',
+              },
+            },
+          ],
         },
       },
       {
-        '@type': 'ActionsToDirective',
-        actions: ['Alexa.Actions.Open'],
-        directive: {
-          name: 'TurnOn',
-          payload: {},
+        rangeValue: 2,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Close',
+              },
+            },
+          ],
         },
       },
-    ],
-    stateMappings: [
       {
-        '@type': 'StatesToValue',
-        states: ['Alexa.States.Closed'],
-        value: 'OFF',
-      },
-      {
-        '@type': 'StatesToValue',
-        states: ['Alexa.States.Open'],
-        value: 'ON',
+        rangeValue: 3,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '止めて',
+                locale: 'ja-JP',
+              },
+            },
+            {
+              '@type': 'text',
+              value: {
+                text: '停止',
+                locale: 'ja-JP',
+              },
+            },
+          ],
+        },
       },
     ],
   },
@@ -263,7 +287,7 @@ export const FanRangeControllerPreset = createCapability({
   configuration: {
     supportedRange: {
       minimumValue: 1,
-      maximumValue: 10,
+      maximumValue: 5,
       precision: 1,
     },
     presets: [
@@ -294,7 +318,7 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 5,
+        rangeValue: 3,
         presetResources: {
           friendlyNames: [
             {
@@ -307,7 +331,7 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 8,
+        rangeValue: 4,
         presetResources: {
           friendlyNames: [
             {
@@ -320,7 +344,7 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 10,
+        rangeValue: 5,
         presetResources: {
           friendlyNames: [
             {
