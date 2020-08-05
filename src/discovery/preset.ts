@@ -81,6 +81,14 @@ export const PowerControllerPreset = createCapability({
 });
 
 /**
+ * PowerLevelController with default value
+ */
+export const PowerLevelControllerPreset = createCapability({
+  interface: 'Alexa.PowerLevelController',
+  supportedProperties: ['powerLevel'],
+});
+
+/**
  * BrightnessController with default value
  */
 export const BrightnessControllerPreset = createCapability({
