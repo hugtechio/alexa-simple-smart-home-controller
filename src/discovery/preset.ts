@@ -11,7 +11,7 @@ export interface CreateCapabilityParam {
   instance?: string;
   proactivelyReported?: boolean;
   retrieable?: boolean;
-  capabilityResources?: {};
+  capabilityResources?: Discovery.CapabilityResources;
   semantics?: Discovery.Semantics;
   configuration?:
     | {}
@@ -197,52 +197,42 @@ export const CurtainRangeControllerPreset = createCapability({
       maximumValue: 5,
       precision: 1,
     },
-    presets: [
+  },
+  semantics: {
+    actionMappings: [
       {
-        rangeValue: 1,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'asset',
-              value: {
-                assetId: 'Alexa.Value.Open',
-              },
-            },
-          ],
+        '@type': 'ActionsToDirective',
+        actions: ['Alexa.Actions.Close'],
+        directive: {
+          name: 'SetRangeValue',
+          payload: {
+            rangeValue: 0,
+          },
         },
       },
       {
-        rangeValue: 2,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'asset',
-              value: {
-                assetId: 'Alexa.Value.Close',
-              },
-            },
-          ],
+        '@type': 'ActionsToDirective',
+        actions: ['Alexa.Actions.Open'],
+        directive: {
+          name: 'SetRangeValue',
+          payload: {
+            rangeValue: 100,
+          },
         },
       },
+    ],
+    stateMappings: [
       {
-        rangeValue: 3,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'text',
-              value: {
-                text: '止めて',
-                locale: 'ja-JP',
-              },
-            },
-            {
-              '@type': 'text',
-              value: {
-                text: '停止',
-                locale: 'ja-JP',
-              },
-            },
-          ],
+        '@type': 'StatesToValue',
+        states: ['Alexa.States.Closed'],
+        value: 0,
+      },
+      {
+        '@type': 'StatesToRange',
+        states: ['Alexa.States.Open'],
+        range: {
+          minimumValue: 1,
+          maximumValue: 5,
         },
       },
     ],
@@ -276,23 +266,22 @@ export const FanRangeControllerPreset = createCapability({
   capabilityResources: {
     friendlyNames: [
       {
-        '@type': 'text',
+        '@type': 'asset',
         value: {
-          text: '扇風機',
-          locale: 'ja-JP',
+          assetId: 'Alexa.DeviceName.Fan',
         },
       },
     ],
   },
   configuration: {
     supportedRange: {
-      minimumValue: 1,
+      minimumValue: 0,
       maximumValue: 5,
       precision: 1,
     },
     presets: [
       {
-        rangeValue: 1,
+        rangeValue: 0,
         presetResources: {
           friendlyNames: [
             {
@@ -305,7 +294,7 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 2,
+        rangeValue: 1,
         presetResources: {
           friendlyNames: [
             {
@@ -318,7 +307,7 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 3,
+        rangeValue: 2,
         presetResources: {
           friendlyNames: [
             {
@@ -331,7 +320,7 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 4,
+        rangeValue: 3,
         presetResources: {
           friendlyNames: [
             {
@@ -344,7 +333,7 @@ export const FanRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 5,
+        rangeValue: 4,
         presetResources: {
           friendlyNames: [
             {

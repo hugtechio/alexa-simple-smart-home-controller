@@ -172,7 +172,7 @@ export interface Capability {
   instance?: string;
   version: string;
   properties?: Properties;
-  capabilityResources?: {};
+  capabilityResources?: CapabilityResources;
   configuration?:
     | {}
     | ThermostatCapabilityConfiguration
@@ -180,6 +180,18 @@ export interface Capability {
   verificationsRequired?: {};
   semantics?: Semantics;
 }
+
+/**
+ * Capability Resources
+ */
+export interface CapabilityResources {
+  friendlyNames: FriendlyName[];
+}
+
+/**
+ * FriendlyName schema
+ */
+export type FriendlyName = PresetResourceAlexaAsset | PresetResourceCustomAsset;
 
 /**
  * Capability Property
@@ -207,11 +219,16 @@ export interface Semantics {
 }
 
 /**
+ * Type of ActionMapping in Semantics object
+ */
+export type ActionMappingType = 'ActionsToDirective';
+
+/**
  * ActionMapping Object
  * This object is part of Semantics object
  */
 export interface ActionMapping {
-  '@type': string;
+  '@type': ActionMappingType;
   actions?: Action[];
   directive?: ActionMappingDirective;
 }
