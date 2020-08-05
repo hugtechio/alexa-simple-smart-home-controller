@@ -197,42 +197,45 @@ export const CurtainRangeControllerPreset = createCapability({
       maximumValue: 5,
       precision: 1,
     },
-  },
-  semantics: {
-    actionMappings: [
+    presets: [
       {
-        '@type': 'ActionsToDirective',
-        actions: ['Alexa.Actions.Close'],
-        directive: {
-          name: 'SetRangeValue',
-          payload: {
-            rangeValue: 0,
-          },
+        rangeValue: 1,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Open',
+              },
+            },
+          ],
         },
       },
       {
-        '@type': 'ActionsToDirective',
-        actions: ['Alexa.Actions.Open'],
-        directive: {
-          name: 'SetRangeValue',
-          payload: {
-            rangeValue: 5,
-          },
+        rangeValue: 2,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'asset',
+              value: {
+                assetId: 'Alexa.Value.Close',
+              },
+            },
+          ],
         },
       },
-    ],
-    stateMappings: [
       {
-        '@type': 'StatesToValue',
-        states: ['Alexa.States.Closed'],
-        value: 0,
-      },
-      {
-        '@type': 'StatesToRange',
-        states: ['Alexa.States.Open'],
-        range: {
-          minimumValue: 1,
-          maximumValue: 5,
+        rangeValue: 3,
+        presetResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '止めて',
+                locale: 'ja-JP',
+              },
+            },
+          ],
         },
       },
     ],
