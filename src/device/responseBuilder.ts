@@ -30,6 +30,7 @@ export const ContextSetThermostatModeResponse = (
         name: 'targetSetpoint',
         value: {
           value: targetSetpoint,
+          scale: scale,
         },
         timeOfSample: timeOfSample,
         uncertaintyInMilliseconds: 500,
