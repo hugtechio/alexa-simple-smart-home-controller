@@ -1,5 +1,5 @@
 {
-  "version": "0.0.37",
+  "version": "0.0.38",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -41,5 +41,7 @@
     "tsdx": "^0.13.2",
     "typescript": "^3.9.7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.27.0"
+  }
 }

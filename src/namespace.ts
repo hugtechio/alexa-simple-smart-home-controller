@@ -78,6 +78,15 @@ export type ControllerErrorResponseType =
   | 'TOO_MANY_FAILED_ATTEMPTS'
   | 'VALUE_OUT_OF_RANGE';
 
+export type ThermostatControllerErrorResponseType =
+  | 'REQUESTED_SETPOINTS_TOO_CLOSE'
+  | 'THERMOSTAT_IS_OFF'
+  | 'UNSUPPORTED_THERMOSTAT_MODE'
+  | 'DUAL_SETPOINTS_UNSUPPORTED'
+  | 'TRIPLE_SETPOINTS_UNSUPPORTED'
+  | 'UNWILLING_TO_SET_SCHEDULE'
+  | 'UNWILLING_TO_SET_VALUE';
+
 /**
  * Controller Directive names (currently not cover all names)
  */
@@ -100,3 +109,19 @@ export type ControllerDirectiveName =
   | 'SetMute'
   | 'SetVolume'
   | 'AdjustVolume';
+
+/**
+ * Temperature Scale
+ */
+export type TemperatureScale = 'CELSIUS' | 'FAHRENHEIT' | 'KELVIN';
+
+/**
+ * Thermostat mode
+ */
+export type ThermostatMode =
+  | 'OFF'
+  | 'COOL'
+  | 'HEAT'
+  | 'AUTO'
+  | 'ECO'
+  | 'CUSTOM';

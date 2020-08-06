@@ -1,10 +1,4 @@
-import {
-  ControllerNameSpace,
-  ControllerResponseNameSpace,
-  ControllerResponseName,
-  ControllerErrorResponseType,
-  ControllerDirectiveName,
-} from '../namespace';
+import * as NS from '../namespace';
 
 /**
  * Supported Header name
@@ -31,8 +25,8 @@ export interface Directive {
  * Header object in the Controller Request
  */
 export interface DirectiveRequestHeader {
-  namespace: ControllerNameSpace;
-  name: ControllerDirectiveName;
+  namespace: NS.ControllerNameSpace;
+  name: NS.ControllerDirectiveName;
   payloadVersion: string;
   messageId: string;
   correlationToken: string;
@@ -58,16 +52,18 @@ export interface DirectiveRequestPayload {
  * Response object of Controller interface
  */
 export interface Response {
-  context?: {
-    properties: Property[];
-  };
+  context?: Context;
   event: ResponseEvent;
+}
+
+export interface Context {
+  properties: Property[];
 }
 /**
  * Property object in the Controller response
  */
 export interface Property {
-  namespace: ControllerNameSpace;
+  namespace: NS.ControllerNameSpace;
   name: string;
   value: any;
   timeOfSample: string;
@@ -90,7 +86,9 @@ export interface ResponseEvent {
 }
 
 export interface ResponseEventErrorPayload {
-  type: ControllerErrorResponseType;
+  type:
+    | NS.ControllerErrorResponseType
+    | NS.ThermostatControllerErrorResponseType;
   message: string;
 }
 
@@ -129,8 +127,8 @@ export interface ValueOutOfRangePayload extends ResponseEventErrorPayload {
  * Request/Response Header
  */
 export interface Header {
-  namespace: ControllerResponseNameSpace;
-  name: ControllerResponseName;
+  namespace: NS.ControllerResponseNameSpace;
+  name: NS.ControllerResponseName;
   payloadVersion: string;
   correlationToken?: string;
   messageId: string;
@@ -171,9 +169,12 @@ export interface Cookie {
  */
 export type DeviceAction = any;
 export type DeviceActionMatcher = (
-  param: DeviceActionMatherParam
+  param: DeviceActionMatcherParam
 ) => DeviceAction;
-export interface DeviceActionMatherParam {
+/**
+ * Device Action Matcher parameter
+ */
+export interface DeviceActionMatcherParam {
   deviceActions: any;
   valueFromAlexa: any;
 }

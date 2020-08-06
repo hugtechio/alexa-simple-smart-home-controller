@@ -99,6 +99,7 @@ export abstract class UserDevice implements IUserDevice {
           endpointId: this.config.event.directive.endpoint.endpointId,
         };
   }
+
   /**
    * Error sResponse
    * @param param UserDeviceGetErrorResponseParam
