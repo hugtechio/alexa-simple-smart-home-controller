@@ -432,7 +432,7 @@ export const FanRangeControllerPreset = createCapability({
               '@type': 'asset',
               value: {
                 assetId: 'Alexa.Value.Minimum',
-              },
+              }
             },
           ],
         },
@@ -484,6 +484,13 @@ export const FanRangeControllerPreset = createCapability({
               '@type': 'asset',
               value: {
                 assetId: 'Alexa.Value.Maximum',
+              },
+            },
+            {
+              '@type': 'text',
+              value: {
+                text: '最大',
+                locale: 'ja-JP'
               },
             },
           ],
