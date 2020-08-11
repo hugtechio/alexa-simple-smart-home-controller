@@ -298,6 +298,17 @@ export interface RangeCapabilityConfigurationPreset {
   };
 }
 
+export interface SupportedModes {
+  value: string;
+  modeResources: {
+    friendlyNames: FriendlyName[]
+  }
+}
+export interface ModeCapabilityConfiguration {
+  ordered: boolean;
+  supportedModes: SupportedModes;
+}
+
 export type PresetResourceFriendlyName =
   | PresetResourceAlexaAsset
   | PresetResourceCustomAsset;

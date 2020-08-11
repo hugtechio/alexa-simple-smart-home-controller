@@ -16,7 +16,8 @@ export interface CreateCapabilityParam {
   configuration?:
     | {}
     | Discovery.ThermostatCapabilityConfiguration
-    | Discovery.RangeCapabilityConfiguration;
+    | Discovery.RangeCapabilityConfiguration
+    | Discovery.ModeCapabilityConfiguration;
 }
 
 /**
@@ -293,6 +294,109 @@ export const ThermostatControllerPreset = createCapability({
   configuration: {
     supportedModes: ['AUTO', 'COOL', 'ECO', 'HEAT', 'OFF'],
     supportsScheduling: false,
+  },
+});
+
+/**
+ * ThermostatModeController preset with default value
+ */
+export const ThermostatModeControllerPreset = createCapability({
+  interface: 'Alexa.ModeController',
+  supportedProperties: [
+    'mode',
+  ],
+  instance: 'Thermostat.mode',
+  capabilityResources: {
+    friendlyNames: [
+      {
+         '@type': 'asset',
+         value: {
+           assetId: 'Alexa.Setting.Mode'
+         }
+      }
+    ]
+  },
+  configuration: {
+    ordered: false,
+    supportedModes: [
+      {
+        value: 'mode.Cool',
+        modeResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '冷房',
+                locale: 'ja-JP'
+              }
+            }
+          ]
+        }
+      },
+      {
+        value: 'mode.Heat',
+        modeResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '暖房',
+                locale: 'ja-JP'
+              }
+            }
+          ]
+        }
+      },
+      {
+        value: 'mode.Humidity',
+        modeResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '加湿',
+                locale: 'ja-JP'
+              }
+            }
+          ]
+        }
+      },
+      {
+        value: 'mode.Fan',
+        modeResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '送風',
+                locale: 'ja-JP'
+              }
+            }
+          ]
+        }
+      },
+      {
+        value: 'mode.Dehumidify',
+        modeResources: {
+          friendlyNames: [
+            {
+              '@type': 'text',
+              value: {
+                text: '除湿',
+                locale: 'ja-JP'
+              }
+            },
+            {
+              '@type': 'text',
+              value: {
+                text: 'ドライ',
+                locale: 'ja-JP'
+              }
+            }
+          ]
+        }
+      },
+    ]
   },
 });
 
