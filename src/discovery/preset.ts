@@ -295,6 +295,8 @@ export const ThermostatControllerPreset = createCapability({
     supportedModes: ['AUTO', 'COOL', 'ECO', 'HEAT', 'OFF'],
     supportsScheduling: false,
   },
+  retrieable: true,
+  proactivelyReported: true
 });
 
 /**
