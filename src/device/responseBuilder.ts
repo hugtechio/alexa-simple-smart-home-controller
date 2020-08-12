@@ -29,7 +29,7 @@ export const ContextSetThermostatModeResponse = (
         namespace: 'Alexa.ThermostatController',
         name: 'targetSetpoint',
         value: {
-          value: targetSetpoint.toFixed(1),
+          value: targetSetpoint,
           scale: scale,
         },
         timeOfSample: timeOfSample,
