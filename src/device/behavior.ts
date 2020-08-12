@@ -1,5 +1,8 @@
-import { ControllerDirectiveName, ControllerNameSpace } from '../namespace';
+import { ControllerDirectiveName, ControllerNameSpace, AlexaNameSpace, ReportStateName } from '../namespace';
 import * as Device from './type';
+
+type Namespace = ControllerNameSpace | AlexaNameSpace
+type Name = ControllerDirectiveName | ReportStateName
 
 /**
  * Behavior definition which map directive
@@ -17,8 +20,8 @@ import * as Device from './type';
  * }
  */
 export type DeviceBehaviorDefinition = {
-  [namespace in ControllerNameSpace]?: {
-    [name in ControllerDirectiveName]?: DeviceBehavior;
+  [namespace in Namespace]?: {
+    [name in Name]?: DeviceBehavior;
   };
 };
 
