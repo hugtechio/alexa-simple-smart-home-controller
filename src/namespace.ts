@@ -1,3 +1,4 @@
+export type AlexaNameSpace = 'Alexa';
 /**
  * Discovery namespace types
  */
@@ -109,6 +110,10 @@ export type ControllerDirectiveName =
   | 'SetMute'
   | 'SetVolume'
   | 'AdjustVolume';
+
+export type ReportStateName = 'ReportState';
+
+export type ReportStateResponseName = 'StateReport';
 
 /**
  * Temperature Scale

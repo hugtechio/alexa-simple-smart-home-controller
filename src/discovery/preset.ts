@@ -296,7 +296,7 @@ export const ThermostatControllerPreset = createCapability({
     supportsScheduling: false,
   },
   retrieable: true,
-  proactivelyReported: true
+  proactivelyReported: true,
 });
 
 /**
@@ -304,26 +304,24 @@ export const ThermostatControllerPreset = createCapability({
  */
 export const ThermostatModeControllerPreset = createCapability({
   interface: 'Alexa.ModeController',
-  supportedProperties: [
-    'mode',
-  ],
+  supportedProperties: ['mode'],
   instance: 'Thermostat.mode',
   capabilityResources: {
     friendlyNames: [
       {
-         '@type': 'asset',
-         value: {
-           assetId: 'Alexa.Setting.Mode'
-         }
+        '@type': 'asset',
+        value: {
+          assetId: 'Alexa.Setting.Mode',
+        },
       },
       {
         '@type': 'text',
         value: {
           text: 'モード',
-          locale: 'ja-JP'
-        }
-      }
-    ]
+          locale: 'ja-JP',
+        },
+      },
+    ],
   },
   configuration: {
     ordered: false,
@@ -336,11 +334,11 @@ export const ThermostatModeControllerPreset = createCapability({
               '@type': 'text',
               value: {
                 text: '冷房',
-                locale: 'ja-JP'
-              }
-            }
-          ]
-        }
+                locale: 'ja-JP',
+              },
+            },
+          ],
+        },
       },
       {
         value: 'mode.Heat',
@@ -350,11 +348,11 @@ export const ThermostatModeControllerPreset = createCapability({
               '@type': 'text',
               value: {
                 text: '暖房',
-                locale: 'ja-JP'
-              }
-            }
-          ]
-        }
+                locale: 'ja-JP',
+              },
+            },
+          ],
+        },
       },
       {
         value: 'mode.Humidity',
@@ -364,11 +362,11 @@ export const ThermostatModeControllerPreset = createCapability({
               '@type': 'text',
               value: {
                 text: '加湿',
-                locale: 'ja-JP'
-              }
-            }
-          ]
-        }
+                locale: 'ja-JP',
+              },
+            },
+          ],
+        },
       },
       {
         value: 'mode.Fan',
@@ -378,11 +376,11 @@ export const ThermostatModeControllerPreset = createCapability({
               '@type': 'text',
               value: {
                 text: '送風',
-                locale: 'ja-JP'
-              }
-            }
-          ]
-        }
+                locale: 'ja-JP',
+              },
+            },
+          ],
+        },
       },
       {
         value: 'mode.Dehumidify',
@@ -392,20 +390,20 @@ export const ThermostatModeControllerPreset = createCapability({
               '@type': 'text',
               value: {
                 text: '除湿',
-                locale: 'ja-JP'
-              }
+                locale: 'ja-JP',
+              },
             },
             {
               '@type': 'text',
               value: {
                 text: 'ドライ',
-                locale: 'ja-JP'
-              }
-            }
-          ]
-        }
+                locale: 'ja-JP',
+              },
+            },
+          ],
+        },
       },
-    ]
+    ],
   },
 });
 
@@ -441,15 +439,14 @@ export const FanRangeControllerPreset = createCapability({
               '@type': 'asset',
               value: {
                 assetId: 'Alexa.Value.Minimum',
-              }
+              },
             },
             {
               '@type': 'text',
               value: {
                 text: '最弱',
-                locale: 'ja-JP'
+                locale: 'ja-JP',
               },
-  
             },
           ],
         },
@@ -507,7 +504,7 @@ export const FanRangeControllerPreset = createCapability({
               '@type': 'text',
               value: {
                 text: '最強',
-                locale: 'ja-JP'
+                locale: 'ja-JP',
               },
             },
           ],

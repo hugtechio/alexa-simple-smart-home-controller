@@ -301,8 +301,8 @@ export interface RangeCapabilityConfigurationPreset {
 export interface SupportedModes {
   value: string;
   modeResources: {
-    friendlyNames: FriendlyName[]
-  }
+    friendlyNames: FriendlyName[];
+  };
 }
 export interface ModeCapabilityConfiguration {
   ordered: boolean;
