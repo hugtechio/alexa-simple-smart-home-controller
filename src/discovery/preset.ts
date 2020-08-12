@@ -313,6 +313,13 @@ export const ThermostatModeControllerPreset = createCapability({
          value: {
            assetId: 'Alexa.Setting.Mode'
          }
+      },
+      {
+        '@type': 'text',
+        value: {
+          text: 'モード',
+          locale: 'ja-JP'
+        }
       }
     ]
   },
