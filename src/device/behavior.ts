@@ -1,8 +1,13 @@
-import { ControllerDirectiveName, ControllerNameSpace, AlexaNameSpace, ReportStateName } from '../namespace';
+import {
+  ControllerDirectiveName,
+  ControllerNameSpace,
+  AlexaNameSpace,
+  ReportStateName,
+} from '../namespace';
 import * as Device from './type';
 
-type Namespace = ControllerNameSpace | AlexaNameSpace
-type Name = ControllerDirectiveName | ReportStateName
+type Namespace = ControllerNameSpace | AlexaNameSpace;
+type Name = ControllerDirectiveName | ReportStateName;
 
 /**
  * Behavior definition which map directive
