@@ -218,9 +218,10 @@ export const CurtainRangeControllerPreset = createCapability({
         presetResources: {
           friendlyNames: [
             {
-              '@type': 'asset',
+              '@type': 'text',
               value: {
-                assetId: 'Alexa.Value.Close',
+                text: '止めて',
+                locale: 'ja-JP',
               },
             },
           ],
@@ -231,10 +232,9 @@ export const CurtainRangeControllerPreset = createCapability({
         presetResources: {
           friendlyNames: [
             {
-              '@type': 'text',
+              '@type': 'asset',
               value: {
-                text: '止めて',
-                locale: 'ja-JP',
+                assetId: 'Alexa.Value.Close',
               },
             },
           ],
