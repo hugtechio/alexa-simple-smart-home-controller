@@ -178,9 +178,9 @@ export const SpeakerPreset = createCapability({
  * Note: only compatible ja-JP locale
  */
 export const CurtainRangeControllerPreset = createCapability({
-  interface: 'Alexa.RangeController',
+  interface: 'Alexa.ToggleController',
   instance: 'Curtain',
-  supportedProperties: ['rangeValue'],
+  supportedProperties: ['toggleState'],
   capabilityResources: {
     friendlyNames: [
       {
@@ -199,83 +199,22 @@ export const CurtainRangeControllerPreset = createCapability({
       },
     ],
   },
-  configuration: {
-    supportedRange: {
-      minimumValue: 1,
-      maximumValue: 5,
-      precision: 2,
-    },
-    unitOfMeasure: 'Alexa.Unit.Percent',
-    presets: [
-      {
-        rangeValue: 1,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'asset',
-              value: {
-                assetId: 'Alexa.Value.Open',
-              },
-            },
-          ],
-        },
-      },
-      {
-        rangeValue: 3,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'text',
-              value: {
-                text: '止めて',
-                locale: 'ja-JP',
-              },
-            },
-            {
-              '@type': 'text',
-              value: {
-                text: 'ストップ',
-                locale: 'ja-JP',
-              },
-            },
-          ],
-        },
-      },
-      {
-        rangeValue: 5,
-        presetResources: {
-          friendlyNames: [
-            {
-              '@type': 'asset',
-              value: {
-                assetId: 'Alexa.Value.Close',
-              },
-            },
-          ],
-        },
-      },
-    ],
-  },
   semantics: {
     actionMappings: [
       {
         '@type': 'ActionsToDirective',
         actions: ['Alexa.Actions.Open'],
         directive: {
-          name: 'SetRangeValue',
-          payload: {
-            rangeValue: 1,
-          },
+          name: 'TurnOn',
+          payload: {},
         },
       },
       {
         '@type': 'ActionsToDirective',
         actions: ['Alexa.Actions.Close'],
         directive: {
-          name: 'SetRangeValue',
-          payload: {
-            rangeValue: 5,
-          },
+          name: 'TurnOff',
+          payload: {},
         },
       },
     ],
@@ -283,12 +222,12 @@ export const CurtainRangeControllerPreset = createCapability({
       {
         '@type': 'StatesToValue',
         states: ['Alexa.States.Open'],
-        value: 1,
+        value: 'ON',
       },
       {
         '@type': 'StatesToValue',
         states: ['Alexa.States.Closed'],
-        value: 5,
+        value: 'OFF',
       },
     ],
   },
