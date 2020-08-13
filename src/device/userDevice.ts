@@ -1,12 +1,7 @@
-import {
-  ResponseName,
-  ControllerResponseName,
-  ControllerErrorResponseType,
-} from '../namespace';
+import { ResponseName, ControllerErrorResponseType } from '../namespace';
 
 import * as Device from './index';
 import { ControllerRequestEvent } from './type';
-
 
 /**
  * DeviceSearchFunction is a logic of finding a target device from Alexa's controller Request.
@@ -79,9 +74,7 @@ export abstract class UserDevice implements IUserDevice {
   /**
    * Get response header
    */
-  protected getResponseHeader(
-    name: ResponseName = 'Response'
-  ): Device.Header {
+  protected getResponseHeader(name: ResponseName = 'Response'): Device.Header {
     return {
       namespace: 'Alexa',
       name: name,
