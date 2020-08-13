@@ -214,7 +214,7 @@ export const CurtainRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 2,
+        rangeValue: 3,
         presetResources: {
           friendlyNames: [
             {
@@ -228,7 +228,7 @@ export const CurtainRangeControllerPreset = createCapability({
         },
       },
       {
-        rangeValue: 3,
+        rangeValue: 5,
         presetResources: {
           friendlyNames: [
             {
@@ -260,7 +260,7 @@ export const CurtainRangeControllerPreset = createCapability({
         directive: {
           name: 'SetRangeValue',
           payload: {
-            rangeValue: 3,
+            rangeValue: 5,
           },
         },
       },
@@ -274,7 +274,7 @@ export const CurtainRangeControllerPreset = createCapability({
       {
         '@type': 'StatesToValue',
         states: ['Alexa.States.Closed'],
-        value: 3,
+        value: 5,
       },
     ],
   },
