@@ -190,13 +190,20 @@ export const CurtainRangeControllerPreset = createCapability({
           locale: 'ja-JP',
         },
       },
+      {
+        '@type': 'text',
+        value: {
+          text: '電動カーテン',
+          locale: 'ja-JP',
+        },
+      },
     ],
   },
   configuration: {
     supportedRange: {
       minimumValue: 1,
       maximumValue: 5,
-      precision: 1,
+      precision: 2,
     },
     unitOfMeasure: 'Alexa.Unit.Percent',
     presets: [
@@ -221,6 +228,13 @@ export const CurtainRangeControllerPreset = createCapability({
               '@type': 'text',
               value: {
                 text: '止めて',
+                locale: 'ja-JP',
+              },
+            },
+            {
+              '@type': 'text',
+              value: {
+                text: 'ストップ',
                 locale: 'ja-JP',
               },
             },
