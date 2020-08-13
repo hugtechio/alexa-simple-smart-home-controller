@@ -52,7 +52,9 @@ export type ControllerResponseNameSpace =
   | 'Alexa.Education'
   | 'Alexa.Business';
 
+export type StateReportResponseName = 'StateReport';
 export type ControllerResponseName = 'Response' | 'ErrorResponse';
+export type ResponseName = ControllerResponseName | StateReportResponseName;
 
 export type ControllerErrorResponseType =
   | 'ALREADY_IN_OPERATION'

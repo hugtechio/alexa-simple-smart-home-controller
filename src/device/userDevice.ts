@@ -6,6 +6,9 @@ import {
 import * as Device from './index';
 import { ControllerRequestEvent } from './type';
 
+type Namespace = ControllerNameSpace | AlexaNameSpace;
+type Name = ControllerDirectiveName | ReportStateName;
+
 /**
  * DeviceSearchFunction is a logic of finding a target device from Alexa's controller Request.
  * SmartHomeController class requires this function on the Constructor.
