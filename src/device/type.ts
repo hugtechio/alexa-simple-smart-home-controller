@@ -128,7 +128,7 @@ export interface ValueOutOfRangePayload extends ResponseEventErrorPayload {
  */
 export interface Header {
   namespace: NS.ControllerResponseNameSpace;
-  name: NS.ControllerResponseName;
+  name: NS.ResponseName;
   payloadVersion: string;
   correlationToken?: string;
   messageId: string;
