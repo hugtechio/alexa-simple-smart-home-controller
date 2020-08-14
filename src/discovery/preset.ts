@@ -177,7 +177,7 @@ export const SpeakerPreset = createCapability({
  * This preset can accept 'Open', 'Close', 'Stop' utterance
  * Note: only compatible ja-JP locale
  */
-export const CurtainRangeControllerPreset = createCapability({
+export const CurtainToggleControllerPreset = createCapability({
   interface: 'Alexa.ToggleController',
   instance: 'Curtain',
   supportedProperties: ['toggleState'],
@@ -205,7 +205,7 @@ export const CurtainRangeControllerPreset = createCapability({
         '@type': 'ActionsToDirective',
         actions: ['Alexa.Actions.Open'],
         directive: {
-          name: 'TurnOn',
+          name: 'Open',
           payload: {},
         },
       },
@@ -213,7 +213,7 @@ export const CurtainRangeControllerPreset = createCapability({
         '@type': 'ActionsToDirective',
         actions: ['Alexa.Actions.Close'],
         directive: {
-          name: 'TurnOff',
+          name: 'Close',
           payload: {},
         },
       },
@@ -222,12 +222,12 @@ export const CurtainRangeControllerPreset = createCapability({
       {
         '@type': 'StatesToValue',
         states: ['Alexa.States.Open'],
-        value: 'ON',
+        value: 'Open',
       },
       {
         '@type': 'StatesToValue',
         states: ['Alexa.States.Closed'],
-        value: 'OFF',
+        value: 'Close',
       },
     ],
   },
