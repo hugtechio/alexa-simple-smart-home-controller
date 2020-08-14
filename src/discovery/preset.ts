@@ -205,7 +205,7 @@ export const CurtainToggleControllerPreset = createCapability({
         '@type': 'ActionsToDirective',
         actions: ['Alexa.Actions.Open'],
         directive: {
-          name: 'Open',
+          name: 'TurnOn',
           payload: {},
         },
       },
@@ -213,7 +213,7 @@ export const CurtainToggleControllerPreset = createCapability({
         '@type': 'ActionsToDirective',
         actions: ['Alexa.Actions.Close'],
         directive: {
-          name: 'Close',
+          name: 'TurnOff',
           payload: {},
         },
       },
