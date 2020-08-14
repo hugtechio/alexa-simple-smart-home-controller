@@ -111,7 +111,8 @@ export type ControllerDirectiveName =
   | 'AdjustVolume'
   | 'SetMute'
   | 'SetVolume'
-  | 'AdjustVolume';
+  | 'AdjustVolume'
+  | string;
 
 export type ReportStateName = 'ReportState';
 
