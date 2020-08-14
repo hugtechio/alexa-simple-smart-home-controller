@@ -222,12 +222,12 @@ export const CurtainToggleControllerPreset = createCapability({
       {
         '@type': 'StatesToValue',
         states: ['Alexa.States.Open'],
-        value: 'Open',
+        value: 'ON',
       },
       {
         '@type': 'StatesToValue',
         states: ['Alexa.States.Closed'],
-        value: 'Close',
+        value: 'OFF',
       },
     ],
   },
