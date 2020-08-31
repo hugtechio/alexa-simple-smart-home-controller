@@ -1,3 +1,10 @@
+# Imporant Notice:
+**This library is deprecated.**
+
+This library currently maintenance on below repository.  
+
+https://github.com/secual/alexa-smart-home-controller
+
 # alexa-simple-smart-home-controller (beta)
 This package make your smart home skill code simpler.
 
